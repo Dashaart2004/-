@@ -1,7 +1,7 @@
 from selenium import webdriver
 import pytest
 import allure
-from auth import AuthPage
+from authorization import AuthPage
 from main import MainPage
 
 
