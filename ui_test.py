@@ -20,6 +20,8 @@ def driver():
 def test_authorization(driver):
     auth = AuthPage(driver)
     auth.auth()
+    main_page = MainPage(driver)
+    main_page.close_window_about_update()
     result = auth.element_is_present()
     assert result == True
 
@@ -32,6 +34,7 @@ def test_make_new_task(driver):
     auth = AuthPage(driver)
     auth.auth()
     main_page = MainPage(driver)
+    main_page.close_window_about_update()
     main_page.go_to_my_company()
     main_page.open_project()
     main_page.add_task("My first task")
@@ -47,6 +50,7 @@ def test_change_user_name(driver):
     auth = AuthPage(driver)
     auth.auth()
     main_page = MainPage(driver)
+    main_page.close_window_about_update()
     main_page.new_name_of_user("Darya")
     result = main_page.get_user_name()
     expected_name = "Darya"
@@ -61,6 +65,7 @@ def test_negative_change_user_name(driver):
     auth = AuthPage(driver)
     auth.auth()
     main_page = MainPage(driver)
+    main_page.close_window_about_update()
     main_page.new_name_of_user(" ")
     result = main_page.get_mistake()
     assert result == "Имя не задано"
@@ -74,6 +79,7 @@ def test_find_task(driver):
     auth = AuthPage(driver)
     auth.auth()
     main_page = MainPage(driver)
+    main_page.close_window_about_update()
     main_page.go_to_my_company()
     main_page.search_task("My first task")
     result = main_page.get_result()

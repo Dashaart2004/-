@@ -60,3 +60,15 @@ class MainPage:
             return True
         except:
             return False
+    @allure.step('Закрытие окна с информацией об удалении')
+    def close_window_about_update(self):
+        try:
+            WebDriverWait(self.__driver, 5).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "popup__header"))
+            )
+            popup_button = self.__driver.find_element(By.CLASS_NAME, "popup__close")
+            popup_button.click()
+            print("Popup window was found and closed.")
+        except:
+            print("No popup window appeared.")
+
